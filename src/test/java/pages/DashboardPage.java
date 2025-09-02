@@ -8,7 +8,8 @@ public class DashboardPage {
     WebDriver driver;
 
     // Locators
-    private By myProfileLink = By.id("linkMyProfile");
+    private By submenuLink = By.id("subMenu");
+    private By myProfileLink = By.linkText("My Profile");
 
     // Constructor
     public DashboardPage(WebDriver driver) {
