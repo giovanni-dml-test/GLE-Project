@@ -8,9 +8,10 @@ public class LoginPage {
     WebDriver driver;
 
     // Locators (replace with your real app’s values)
-    private By usernameField = By.id("username");
-    private By passwordField = By.id("password");
-    private By loginButton = By.id("btnLogin");
+    private By usernameField = By.name("email");
+    private By passwordField = By.name("password");
+    private By loginButton = By.cssSelector("button.btn.btn-primary");
+
 
     // Constructor
     public LoginPage(WebDriver driver) {
