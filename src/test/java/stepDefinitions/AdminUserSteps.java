@@ -72,7 +72,7 @@ public class AdminUserSteps {
     @When("I navigate to {string}")
     public void i_navigate_to(String section) {
         if (section.equals("User Management")) {
-            dashboardPage.goToUserManagement();
+            userManagementPage.goToUserManagementPage("http://64.227.123.49/dashboard/users");
         }
     }
 
@@ -99,13 +99,16 @@ public class AdminUserSteps {
 
     @When("I modify one or more fields \\(e.g., email, phone number)")
     public void i_modify_one_or_more_fields() {
+        userManagementEditPage.updateFirstName("UpdatedFirstName");
+        userManagementEditPage.updateLastName("UpdatedLastName");
         userManagementEditPage.updateEmail("newemail@test.com");
         userManagementEditPage.updatePhone("123456789");
+        userManagementEditPage.updateRole("MANAGER");
     }
 
     @When("I save the changes")
     public void i_save_the_changes() {
-        userManagementEditPage.clickSave();
+        userManagementEditPage.clickUpdate();
     }
 
     @Then("User information is successfully updated and visible in the system")
@@ -128,7 +131,7 @@ public class AdminUserSteps {
 
     @When("I select and assign roles \\(Manager, Customer, or Admin)")
     public void i_select_and_assign_roles() {
-        userManagementEditPage.assignRole("Manager");
+        userManagementEditPage.updateRole("Manager");
     }
 
     @Then("The user is successfully assigned the selected roles")
