@@ -10,7 +10,7 @@ public class LoginPage {
     // Locators (replace with your real app’s values)
     private By usernameField = By.name("email");
     private By passwordField = By.name("password");
-    private By loginButton = By.cssSelector("button.btn.btn-primary");
+    private By loginButton = By.cssSelector("submit-button.btn.btn-secondary");
 
 
     // Constructor
