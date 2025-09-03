@@ -8,16 +8,22 @@ public class RegistrationPage {
     private WebDriver driver;
 
     // Locators
-    private By firstNameInput = By.id("firstName");
-    private By lastNameInput = By.id("lastName");
-    private By phoneInput = By.id("phone");
-    private By emailInput = By.id("email");
-    private By passwordInput = By.id("password");
-    private By confirmPasswordInput = By.id("confirmPassword");
+    private By firstNameInput = By.name("firstName");
+    private By lastNameInput = By.name("lastName");
+    private By phoneInput = By.name("phone");
+    private By emailInput = By.name("email");
+    private By passwordInput = By.name("password");
+    private By confirmPasswordInput = By.name("confirmPassword");
     private By termsCheckbox = By.id("terms");
-    private By registerButton = By.id("registerBtn");
-    private By errorMessage = By.cssSelector(".error-message");
-    private By successMessage = By.cssSelector(".success-message");
+    private By registerButton = By.xpath("//button[text()='Register']");
+    private By errorMessage = By.xpath("//div[@class='p-toast-detail' and text()='E-mail already exists.']");
+    private By successMessage = By.xpath("//div[@class='p-toast-detail' and text()='Your registration has been completed successfully. Please to activate your account, click on the activation link sent to your e-mail.']");
+    private By firstNameError = By.xpath("//span[text()='First name is required']");
+    private By lastNameError = By.xpath("//span[text()='Last name is required']");
+    private By phoneError = By.xpath("//span[text()='Phone is required']");
+    private By emailError = By.xpath("//span[text()='Email is required']");
+    private By passwordError = By.xpath("//span[text()='Password is required']");
+    private By confirmPasswordError = By.xpath("//span[text()='Confirm password is required']");
 
     // Constructor
     public RegistrationPage(WebDriver driver) {
@@ -25,6 +31,9 @@ public class RegistrationPage {
     }
 
     // Actions
+
+
+
     public void enterFirstName(String firstName) {
         driver.findElement(firstNameInput).clear();
         driver.findElement(firstNameInput).sendKeys(firstName);
@@ -84,5 +93,9 @@ public class RegistrationPage {
 
     public boolean isTermsUncheckedByDefault() {
         return !driver.findElement(termsCheckbox).isSelected();
+    }
+
+    public void open() {
+        driver.get("http://64.227.123.49/register"); // Replace with actual URL
     }
 }
