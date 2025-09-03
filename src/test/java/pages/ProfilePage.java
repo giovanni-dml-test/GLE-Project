@@ -2,7 +2,6 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
 public class ProfilePage {
 
@@ -12,21 +11,31 @@ public class ProfilePage {
     private By firstNameField = By.id("firstName");
     private By lastNameField = By.id("lastName");
     private By phoneField = By.id("phone");
-    private By saveButton = By.id("btnSave");
+    private By emailField = By.id("email");
+    private By updateButton = By.id("btnUpdateProfile");
     private By confirmationMessage = By.cssSelector(".alert-success");
     private By errorMessage = By.cssSelector(".alert-danger");
 
-    private By changePasswordButton = By.id("btnChangePassword");
+    private By changePasswordButton = By.xpath("//button[text()='Change Password']");
+    private By saveButton = By.xpath("//button[text()='CHANGE']");
     private By currentPasswordField = By.id("currentPassword");
     private By newPasswordField = By.id("newPassword");
     private By confirmPasswordField = By.id("confirmPassword");
 
-    private By profilePhotoButton = By.id("btnProfilePhoto");
-    private By profilePhotoUpload = By.id("profileImageUpload");
-    private By profileImage = By.cssSelector("img.profile-picture");
+    private By profilePhotoButton = By.xpath("//button[text()='Profile Photo']");
+    private By btn_profileImagePreview = By.className("p-image-preview-indicator");
+    private By profileImagePreview = By.className("p-image-preview");
+    private By profilePhotoSelect = By.xpath("//button[text()='SELECT']");
+    private By profileImage = By.cssSelector("input[type='file'][accept='image/*']");
 
-    private By deleteAccountButton = By.id("btnDeleteAccount");
-    private By confirmDeleteButton = By.id("btnConfirmDelete");
+
+
+
+
+    private By deleteAccountButton = By.xpath("//button[text()='Delete Account']");
+    private By btn_DeleteButton = By.xpath("//button[text()='DELETE ACCOUNT']");
+    private By btn_ConfirmDeletion = By.className("p-confirm-dialog-accept.p-button.p-component");
+    private By btn_RejectDeletion = By.className("p-confirm-dialog-reject.p-button-text.p-button.p-component");
 
     // Constructor
     public ProfilePage(WebDriver driver) {
@@ -85,7 +94,7 @@ public class ProfilePage {
 
     // ===== Profile Picture =====
     public void uploadProfilePicture(String filePath) {
-        driver.findElement(profilePhotoUpload).sendKeys(filePath);
+        driver.findElement(profileImage).sendKeys(filePath);
     }
 
     public boolean isProfilePictureDisplayed() {
@@ -94,7 +103,7 @@ public class ProfilePage {
 
     // ===== Account Deletion =====
     public void confirmAccountDeletion() {
-        driver.findElement(confirmDeleteButton).click();
+        driver.findElement(btn_DeleteButton).click();
     }
 
     public boolean isAccountDeleted() {

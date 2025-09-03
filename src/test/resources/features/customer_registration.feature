@@ -22,7 +22,7 @@ Feature: Registration form validation
     When the user leaves the Phone Number field empty
     And fills all other fields correctly
     And clicks Register
-    Then an error message "Phone number is required" should be displayed
+    Then an error message "Invalid phone number" should be displayed
 
   Scenario: TC_04 - Email is mandatory
     When the user leaves the Email field empty
