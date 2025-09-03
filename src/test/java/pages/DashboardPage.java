@@ -30,4 +30,14 @@ public class DashboardPage {
                 throw new IllegalArgumentException("Unknown menu option: " + menuOption);
         }
     }
+
+    public boolean isAdminDashboardDisplayed() {
+        boolean isDisplayed = false;
+        try {
+            isDisplayed = driver.getCurrentUrl().equals("http://64.227.123.49/dashboard");
+        } catch (Exception e) {
+            isDisplayed = false;
+    }
+        return isDisplayed;
+    }
 }
