@@ -2,13 +2,33 @@ package hooks;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Scenario;
+import org.junit.Before;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
 import utils.Driver;
 
 import java.io.IOException;
 
 public class Hooks {
+
+    private static WebDriver driver = Driver.getDriver();
+
+    @Before
+    public void setUp() {
+
+        driver.manage().window().maximize();
+    }
+
+    @After
+    public void tearDown() {
+        if (driver != null) {
+            driver.quit();
+        }
+    }
+
+
+
 
     @After
     public void afterTearDown(Scenario scenario) throws IOException {
