@@ -44,7 +44,7 @@ public class AdminUserSteps {
     @When("I click on the {string} button")
     public void i_click_on_the_button(String buttonName) {
         if (buttonName.equals("Login")) {
-            loginPage.clickLogin();
+            loginPage.clickLoginButton();
         } else if (buttonName.equals("Delete User")) {
             userManagementEditPage.clickDelete();
         }
@@ -66,7 +66,7 @@ public class AdminUserSteps {
     public void i_am_logged_in_as_admin() {
         i_navigate_to_the_login_page();
         i_enter_valid_admin_username_and_password();
-        loginPage.clickLogin();
+        loginPage.clickLoginButton();
     }
 
     @When("I navigate to {string}")
