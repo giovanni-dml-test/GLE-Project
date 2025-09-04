@@ -7,6 +7,7 @@ import utils.Driver;
 
 public class HomePage {
     public HomePage()
+
     {PageFactory.initElements(Driver.getDriver(), this);}
 
 
@@ -86,6 +87,9 @@ public class HomePage {
     @FindBy(xpath = "//button[text()='SHOP']")
     public WebElement shopTab;
 
+ public void clickLogin(){
+     login.click();
+ }
 
 
 
