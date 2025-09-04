@@ -8,7 +8,7 @@ Feature: Admin User Management
     Given User has valid Admin credentials
     When I navigate to the login page
     And I enter valid Admin username and password
-    And I click on the "Login" button
+    And I click on the Login button
     Then Admin is successfully logged in and redirected to the Admin dashboard
 
   @TC_02
@@ -23,25 +23,25 @@ Feature: Admin User Management
   Scenario: Update user information
     Given Admin is logged in, and user information exists
     When I navigate to the created user's profile
-    And I click on "Edit" or "Update" button
+    And I click on the edit button
     And I modify one or more fields (e.g., email, phone number)
     And I save the changes
     Then User information is successfully updated and visible in the system
 
   @TC_04
   Scenario: Assign roles (Manager, Customer, Admin)
-    Given Admin is logged in, and a user is created
+    Given Admin is logged in, and user information exists
     When I open the created user's profile
-    And I navigate to the "Roles" section
+    And I navigate to the Roles section
     And I select and assign roles (Manager, Customer, or Admin)
-    And I save changes
+    And I save the changes
     Then The user is successfully assigned the selected roles
 
   @TC_05
   Scenario: Delete user
-    Given Admin is logged in, and at least one user exists
+    Given Admin is logged in, and user information exists
     When I navigate to "User Management"
     And I select the created user
-    And I click on "Delete User"
+    And I click on "DELETE"
     And I confirm the deletion
     Then User account is permanently deleted and no longer visible in the system

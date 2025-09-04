@@ -3,53 +3,65 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import utils.Driver;
+
+import java.util.List;
 
 public class UserManagementPage {
 
-    WebDriver driver;
+
 
     // --- Locators ---
-    private By userTable = By.id("userTable"); // replace with actual locator
-    private By searchBox = By.id("searchUser"); // optional, if search exists
-    private By userRow(String username) {
-        return By.xpath("//table[@id='userTable']//tr[td[text()='" + username + "']]");
-    }
-    private By openUserButton(String username) {
-        return By.xpath("//table[@id='userTable']//tr[td[text()='" + username + "']]//a[text()='View']");
-    }
+    @FindBy(xpath = "//input[@name='search']")
+    public WebElement searchBox;
+
+    @FindBy(xpath = "//button[@class ='search-button btn btn-outline-secondary'")
+    public WebElement searchButton;
+
+    // User table itself
+    @FindBy(css = "div.tr-datatable table.p-datatable-table")
+    public WebElement userTable;
+
+    // Table rows (list of all users)
+    @FindBy(css = "tbody.p-datatable-tbody tr")
+    public List<WebElement> userRows;
+
+    // First row Name
+    @FindBy(xpath = "//tbody[@class='p-datatable-tbody']//tr[1]/td[1]")
+    public WebElement firstUserName;
+
+    // First row Email
+    @FindBy(xpath = "//tbody[@class='p-datatable-tbody']//tr[1]/td[2]")
+    public WebElement firstUserEmail;
+
+    // All Names in the Name column
+    @FindBy(xpath = "//tbody[@class='p-datatable-tbody']//tr/td[1]")
+    public List<WebElement> allUserNames;
+
+    // All Emails in the Email column
+    @FindBy(xpath = "//tbody[@class='p-datatable-tbody']//tr/td[2]")
+    public List<WebElement> allUserEmails;
+
+    // Action buttons (edit/delete) in each row
+    @FindBy(css = "tbody.p-datatable-tbody tr td:last-child .operationsButton button")
+    public List<WebElement> actionButtons;
+
+    // Example: Delete button in first row
+    @FindBy(xpath = "(//tbody[@class='p-datatable-tbody']//tr[1]//button)[2]")
+    public WebElement firstRowDeleteButton;
+
+
+
+
 
     // --- Constructor ---
-    public UserManagementPage(WebDriver driver) {
-        this.driver = driver;
+    public UserManagementPage() {
+        PageFactory.initElements(Driver.getDriver(), this);
     }
 
     // --- Actions ---
 
-    /** Navigate directly to User Management page */
-    public void goToUserManagementPage(String url) {
-        driver.get(url); // e.g., "http://yourappurl.com/admin/users"
-    }
 
-    /** Search for a user by username */
-    public void searchUser(String username) {
-        WebElement searchInput = driver.findElement(searchBox);
-        searchInput.clear();
-        searchInput.sendKeys(username);
-        searchInput.submit(); // or click a search button if required
-    }
-
-    /** Open a specific user profile */
-    public void openUser(String username) {
-        WebElement userLink = driver.findElement(openUserButton(username));
-        userLink.click();
-    }
-
-    /** Check if a user exists in the list */
-    public boolean isUserPresent(String username) {
-        try {
-            return driver.findElement(userRow(username)).isDisplayed();
-        } catch (Exception e) {
-            return false;
-        }
-    }
 }
