@@ -5,8 +5,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import pages.LoginPage;
 import pages.DashboardPage;
+import pages.UserManagementEditPage;
 import pages.UserManagementPage;
-import pages.UserProfilePage;
 
 import static org.junit.Assert.*;
 
@@ -16,7 +16,7 @@ public class AdminUserSteps {
     LoginPage loginPage;
     DashboardPage dashboardPage;
     UserManagementPage userManagementPage;
-    UserProfilePage userProfilePage;
+    UserManagementEditPage userManagementEditPage;
 
     @Given("User has valid Admin credentials")
     public void user_has_valid_admin_credentials() {
@@ -28,7 +28,7 @@ public class AdminUserSteps {
         loginPage = new LoginPage(driver);
         dashboardPage = new DashboardPage(driver);
         userManagementPage = new UserManagementPage(driver);
-        userProfilePage = new UserProfilePage(driver);
+        userManagementEditPage = new UserManagementEditPage(driver);
     }
 
     @When("I navigate to the login page")
@@ -44,9 +44,9 @@ public class AdminUserSteps {
     @When("I click on the {string} button")
     public void i_click_on_the_button(String buttonName) {
         if (buttonName.equals("Login")) {
-            loginPage.clickLogin();
+            loginPage.clickLoginButton();
         } else if (buttonName.equals("Delete User")) {
-            userProfilePage.clickDelete();
+            userManagementEditPage.clickDelete();
         }
     }
 
@@ -66,13 +66,13 @@ public class AdminUserSteps {
     public void i_am_logged_in_as_admin() {
         i_navigate_to_the_login_page();
         i_enter_valid_admin_username_and_password();
-        loginPage.clickLogin();
+        loginPage.clickLoginButton();
     }
 
     @When("I navigate to {string}")
     public void i_navigate_to(String section) {
         if (section.equals("User Management")) {
-            dashboardPage.goToUserManagement();
+            userManagementPage.goToUserManagementPage("http://64.227.123.49/dashboard/users");
         }
     }
 
@@ -83,7 +83,7 @@ public class AdminUserSteps {
 
     @Then("Created user's information is displayed correctly")
     public void created_user_information_is_displayed_correctly() {
-        assertTrue(userProfilePage.isUserInfoDisplayed("testuser"));
+        assertTrue(userManagementEditPage.isUserInfoDisplayed("testuser"));
     }
 
     // --- TC_03: Update user ---
@@ -94,23 +94,26 @@ public class AdminUserSteps {
 
     @When("I click on {string} or {string} button")
     public void i_click_on_edit_or_update_button(String editBtn, String updateBtn) {
-        userProfilePage.clickEdit();
+        userManagementEditPage.clickEdit();
     }
 
     @When("I modify one or more fields \\(e.g., email, phone number)")
     public void i_modify_one_or_more_fields() {
-        userProfilePage.updateEmail("newemail@test.com");
-        userProfilePage.updatePhone("123456789");
+        userManagementEditPage.updateFirstName("UpdatedFirstName");
+        userManagementEditPage.updateLastName("UpdatedLastName");
+        userManagementEditPage.updateEmail("newemail@test.com");
+        userManagementEditPage.updatePhone("123456789");
+        userManagementEditPage.updateRole("MANAGER");
     }
 
     @When("I save the changes")
     public void i_save_the_changes() {
-        userProfilePage.clickSave();
+        userManagementEditPage.clickUpdate();
     }
 
     @Then("User information is successfully updated and visible in the system")
     public void user_information_is_successfully_updated_and_visible_in_the_system() {
-        assertEquals("newemail@test.com", userProfilePage.getEmail());
+        assertEquals("newemail@test.com", userManagementEditPage.getEmail());
     }
 
     // --- TC_04: Assign roles ---
@@ -122,24 +125,24 @@ public class AdminUserSteps {
     @When("I navigate to the {string} section")
     public void i_navigate_to_the_section(String section) {
         if (section.equals("Roles")) {
-            userProfilePage.openRolesTab();
+            userManagementEditPage.openRolesTab();
         }
     }
 
     @When("I select and assign roles \\(Manager, Customer, or Admin)")
     public void i_select_and_assign_roles() {
-        userProfilePage.assignRole("Manager");
+        userManagementEditPage.updateRole("Manager");
     }
 
     @Then("The user is successfully assigned the selected roles")
     public void the_user_is_successfully_assigned_the_selected_roles() {
-        assertTrue(userProfilePage.isRoleAssigned("Manager"));
+        assertTrue(userManagementEditPage.isRoleAssigned("Manager"));
     }
 
     // --- TC_05: Delete user ---
     @When("I confirm the deletion")
     public void i_confirm_the_deletion() {
-        userProfilePage.confirmDelete();
+        userManagementEditPage.confirmDelete();
     }
 
     @Then("User account is permanently deleted and no longer visible in the system")

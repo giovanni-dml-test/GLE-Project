@@ -4,93 +4,142 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Assert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import pages.HomePage;
+import pages.LoginPage;
+import utils.Driver;
+
+import java.util.List;
 
 public class Customer_Login_stepDefs {
-    @Given("the customer is registered in the system")
-    public void the_customer_is_registered_in_the_system() {
+    WebDriver driver = Driver.getDriver();
 
-    }
+    LoginPage loginPage = new LoginPage(Driver.getDriver());
+    HomePage homePage = new HomePage();
 
-    @When("the user goes to the website http:\\/\\/{double}.{int}.{int}\\/")
-    public void the_user_goes_to_the_website_http(Double double1, Integer int1, Integer int2) {
+    @Given("the user goes to the website {string}")
+    public void the_user_goes_to_the_website(String url) {
+        driver.get(url);
+
 
     }
 
     @When("clicks on the Login button")
     public void clicks_on_the_login_button() {
+        homePage.login.click();
+
 
     }
 
     @When("enters {string} in the Email field")
-    public void enters_in_the_email_field(String string) {
+    public void enters_in_the_email_field(String email) {
+        loginPage.enterUsername(email);
 
     }
 
+    @Given("clicks on the password Field")
+    public void clicks_on_the_password_field() {
+        loginPage.clickOnPasswordField();
+    }
+
     @Then("the system should {string}")
-    public void the_system_should(String string) {
+    public void the_system_should(String expectedResult) {
+
+        if (expectedResult.equalsIgnoreCase("Invalid email")) {
+            String actualMessage = loginPage.getInvalidEmailMessage();
+            Assert.assertTrue(
+                    " Expected 'Invalid email' but got: " + actualMessage,
+                    actualMessage.toLowerCase().contains("invalid email"));
+
+        } else {
+            //expect No error message
+            List<WebElement> errorElements = Driver.getDriver()
+                    .findElements(By.cssSelector("div.form-feedback.invalid-feedback"));
+
+            boolean isErrorAbsent = errorElements.isEmpty() || !errorElements.get(0).isDisplayed();
+            Assert.assertTrue(" Error message was displayed when it should not", isErrorAbsent);
+        }
+
 
     }
 
     @When("enters a valid email in the Email field")
     public void enters_a_valid_email_in_the_email_field() {
 
+        loginPage.enterUsername("ajeeshacus@gmail.com");
+
     }
 
     @When("leaves the Password field blank")
     public void leaves_the_password_field_blank() {
+        loginPage.enterPassword("");
 
+    }
+    @Given("Clicks on the emailfield")
+    public void clicks_on_the_emailfield() {
+        loginPage.clickOnEmailField();
+    }
+    @Given("clicks on LoginButton")
+    public void clicks_on_login_button() {
+       loginPage.clickLoginButton();
     }
 
     @Then("an error message {string} should appear")
-    public void an_error_message_should_appear(String string) {
+    public void an_error_message_should_appear(String expectedMessage) {
+        String actualMessage = loginPage.passwordRequiredMessage();
+        Assert.assertEquals(expectedMessage, actualMessage);
+
 
     }
 
     @When("the user enters a valid password")
     public void the_user_enters_a_valid_password() {
+        loginPage.enterPassword("Ajeeshacus@123");
 
     }
 
     @Then("the error message should disappear")
     public void the_error_message_should_disappear() {
 
-    }
-
-    @When("the user goes to the website")
-    public void the_user_goes_to_the_website() {
-
+        Assert.assertFalse("Password error message should disappear", loginPage.isPasswordErrorDisplayed());
     }
 
     @When("enters a valid password in the Password field")
     public void enters_a_valid_password_in_the_password_field() {
+        loginPage.enterPassword("Ajeeshacus@123");
 
     }
 
     @When("clicks the Login button")
     public void clicks_the_login_button() {
-
-    }
-
-    @Then("the user should be successfully logged in")
-    public void the_user_should_be_successfully_logged_in() {
+        loginPage.clickLoginButton();
 
     }
 
     @Then("redirected to the Homepage")
     public void redirected_to_the_homepage() {
+        Assert.assertTrue(homePage.profileIcon.isDisplayed());
+
 
     }
 
     @When("enters {string} in the Password field")
-    public void enters_in_the_password_field(String string) {
+    public void enters_in_the_password_field(String password) {
+        loginPage.enterPassword(password);
 
     }
 
     @Then("the system should display an error message {string}")
-    public void the_system_should_display_an_error_message(String string) {
+    public void the_system_should_display_an_error_message(String expectedPartialMessage) {
+
+        String actualMessage = loginPage.getInvalidLoginMessage();
+
+        Assert.assertTrue("Expected message to contain: \"" + expectedPartialMessage + "\" but got: \"" + actualMessage + "\"", actualMessage.contains(expectedPartialMessage));
 
     }
-
 
 
 
