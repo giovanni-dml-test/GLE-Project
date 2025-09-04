@@ -5,82 +5,86 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import utils.Driver;
 
 import java.time.Duration;
 
 public class LoginPage {
-
-    WebDriver driver;
-
-    // Locators (replace with your real app’s values)
-    private By usernameField = By.name("email");
-    private By passwordField = By.name("password");
-    private By emailerrorMessage = By.xpath("//div[contains(text(),'Invalid email')]");
-    private By passwordRequiredMessage = By.xpath("//div[contains(text(),'Password is required')]");
-    //private By invalidLoginMessage = By.xpath("//div[contains(text(), 'Invalid username or password')]");
-    private By invalidLoginMessage =By.cssSelector("div.p-toast-detail");
-    //private By loginButton = By.cssSelector("submit-button.btn.btn-secondary");
-    private By loginButton=By.xpath("//button[text()='LOGIN']");
-
-
-    // Constructor
-    public LoginPage(WebDriver driver) {
-        this.driver = driver;
+    //  Constructor
+    public LoginPage() {
+        PageFactory.initElements(Driver.getDriver(), this);
     }
 
+    //  Locators
+    @FindBy(name = "email")
+    private WebElement usernameField;
+
+    @FindBy(name = "password")
+    private WebElement passwordField;
+
+    @FindBy(xpath = "//button[text()='LOGIN']")
+    private WebElement loginButton;
+
+    @FindBy(xpath = "//div[contains(text(),'Invalid email')]")
+    private WebElement emailErrorMessage;
+
+    @FindBy(xpath = "//div[contains(text(),'Password is required')]")
+    private WebElement passwordRequiredMessage;
+
+    @FindBy(css = "div.p-toast-detail")
+    private WebElement invalidLoginMessage;
+
+
+    //  Page Methods
     public void enterUsername(String username) {
-        driver.findElement(usernameField).clear();
-        driver.findElement(usernameField).sendKeys(username);
+        usernameField.clear();
+        usernameField.sendKeys(username);
     }
 
     public void enterPassword(String password) {
-        driver.findElement(passwordField).clear();
-        driver.findElement(passwordField).sendKeys(password);
+        passwordField.clear();
+        passwordField.sendKeys(password);
     }
 
     public void clickLoginButton() {
-        driver.findElement(loginButton).click();
+        loginButton.click();
     }
 
     public void login(String username, String password) {
-        driver.findElement(usernameField).clear();
-        driver.findElement(usernameField).sendKeys(username);
-
-        driver.findElement(passwordField).clear();
-        driver.findElement(passwordField).sendKeys(password);
-
-        driver.findElement(loginButton).click();
+        enterUsername(username);
+        enterPassword(password);
+        clickLoginButton();
     }
 
     public String getInvalidEmailMessage() {
-        return driver.findElement(emailerrorMessage).getText();
+        return emailErrorMessage.getText();
     }
 
-    public String passwordRequiredMessage() {
-        return driver.findElement(passwordRequiredMessage).getText();
+    public String getPasswordRequiredMessage() {
+        return passwordRequiredMessage.getText();
     }
 
-    public String getInvalidLoginMessage(){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        // Wait until the message is visible
-        wait.until(ExpectedConditions.visibilityOfElementLocated(invalidLoginMessage));
-        return driver.findElement(invalidLoginMessage).getText();
+    public String getInvalidLoginMessage() {
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.visibilityOf(invalidLoginMessage));
+        return invalidLoginMessage.getText();
     }
 
     public void clickOnPasswordField() {
-
-        driver.findElement(passwordField).click();
+        passwordField.click();
     }
+
     public void clickOnEmailField() {
-
-        driver.findElement(usernameField).click();
+        usernameField.click();
     }
+
     public boolean isPasswordErrorDisplayed() {
         try {
-            return driver.findElement(passwordRequiredMessage).isDisplayed();
-        } catch (NoSuchElementException e) {
+            return passwordRequiredMessage.isDisplayed();
+        } catch (Exception e) {
             return false;
         }
     }
