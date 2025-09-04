@@ -9,16 +9,25 @@ import utils.Driver;
 
 public class DashboardPage {
 
+
     public DashboardPage() {
         PageFactory.initElements(Driver.getDriver(), this);
+
+
+    // Locators
+   
+    
     }
     @FindBy(xpath = "//span[text()='Back to Site']")
     private WebElement backToSite;
 
-    //method
-     public void goBackToSite(){
-         backToSite.click();
-     }
+    
 
+
+
+    public void goBackTosite(){
+        driver.findElement(backToSite).click();
+
+    }
 
 }
