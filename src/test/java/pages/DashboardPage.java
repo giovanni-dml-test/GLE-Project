@@ -10,6 +10,7 @@ public class DashboardPage {
     // Locators
     private By submenuLink = By.id("subMenu");
     private By myProfileLink = By.linkText("My Profile");
+    private By backToSite =By.xpath("//span[text()='Back to Site']");
 
     // Constructor
     public DashboardPage(WebDriver driver) {
@@ -18,5 +19,9 @@ public class DashboardPage {
 
     public void goToProfile() {
         driver.findElement(myProfileLink).click();
+    }
+
+    public void goBackTosite(){
+        driver.findElement(backToSite).click();
     }
 }
