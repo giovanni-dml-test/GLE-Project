@@ -2,32 +2,23 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import utils.Driver;
 
 public class DashboardPage {
 
-    WebDriver driver;
-
-    // Locators
-    private By submenuLink = By.id("subMenu");
-    private By myProfileLink = By.linkText("My Profile");
-
-    // Constructor
-    public DashboardPage(WebDriver driver) {
-        this.driver = driver;
+    public DashboardPage() {
+        PageFactory.initElements(Driver.getDriver(), this);
     }
+    @FindBy(xpath = "//span[text()='Back to Site']")
+    private WebElement backToSite;
 
-    public void goToProfile() {
-        driver.findElement(myProfileLink).click();
-    }
+    //method
+     public void goBackToSite(){
+         backToSite.click();
+     }
 
-    public void navigateTo(String menuOption) {
-        switch (menuOption.toLowerCase()) {
-            case "my profile":
-                driver.findElement(myProfileLink).click();
-                break;
-            // Add more cases for other menu options as needed
-            default:
-                throw new IllegalArgumentException("Unknown menu option: " + menuOption);
-        }
-    }
+
 }

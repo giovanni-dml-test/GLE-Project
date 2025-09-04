@@ -17,7 +17,7 @@ import java.util.List;
 public class Customer_Login_stepDefs {
     WebDriver driver = Driver.getDriver();
 
-    LoginPage loginPage = new LoginPage(Driver.getDriver());
+    LoginPage loginPage = new LoginPage();
     HomePage homePage = new HomePage();
 
     @Given("the user goes to the website {string}")
@@ -89,7 +89,7 @@ public class Customer_Login_stepDefs {
 
     @Then("an error message {string} should appear")
     public void an_error_message_should_appear(String expectedMessage) {
-        String actualMessage = loginPage.passwordRequiredMessage();
+        String actualMessage = loginPage.getPasswordRequiredMessage();
         Assert.assertEquals(expectedMessage, actualMessage);
 
 
