@@ -12,7 +12,7 @@ import java.io.IOException;
 
 public class Hooks {
 
-    private static WebDriver driver = Driver.getDriver();
+    private static final WebDriver driver = Driver.getDriver();
 
     @Before
     public void setUp() {
