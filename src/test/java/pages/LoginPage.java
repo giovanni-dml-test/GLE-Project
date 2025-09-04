@@ -29,7 +29,7 @@ public class LoginPage {
     private WebElement loginButton;
 
     @FindBy(xpath = "//div[contains(text(),'Invalid email')]")
-    private WebElement emailErrorMessage;
+    public WebElement emailErrorMessage;
 
     @FindBy(xpath = "//div[contains(text(),'Password is required')]")
     private WebElement passwordRequiredMessage;
