@@ -16,7 +16,7 @@ Feature: User Profile Management
   Scenario: Update Profile Information
     Given the profile page is open
     When the user updates profile fields (e.g., first name, last name, phone number)
-    And the user clicks "Save"
+    And the user clicks "Update"
     Then the profile is updated successfully
     And a confirmation message is displayed
 

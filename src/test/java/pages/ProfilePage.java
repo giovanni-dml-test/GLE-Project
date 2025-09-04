@@ -2,112 +2,87 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import utils.Driver;
 
 public class ProfilePage {
 
     WebDriver driver;
 
     // Locators (replace with your app’s real IDs/XPaths)
-    private By firstNameField = By.id("firstName");
-    private By lastNameField = By.id("lastName");
-    private By phoneField = By.id("phone");
-    private By emailField = By.id("email");
-    private By updateButton = By.id("btnUpdateProfile");
-    private By confirmationMessage = By.cssSelector(".alert-success");
-    private By errorMessage = By.cssSelector(".alert-danger");
 
-    private By changePasswordButton = By.xpath("//button[text()='Change Password']");
-    private By saveButton = By.xpath("//button[text()='CHANGE']");
-    private By currentPasswordField = By.id("currentPassword");
-    private By newPasswordField = By.id("newPassword");
-    private By confirmPasswordField = By.id("confirmPassword");
+    @FindBy(xpath = "//button[text()='Profile']")
+    public WebElement profileTab;
 
-    private By profilePhotoButton = By.xpath("//button[text()='Profile Photo']");
-    private By btn_profileImagePreview = By.className("p-image-preview-indicator");
-    private By profileImagePreview = By.className("p-image-preview");
-    private By profilePhotoSelect = By.xpath("//button[text()='SELECT']");
-    private By profileImage = By.cssSelector("input[type='file'][accept='image/*']");
+    @FindBy(id = "firstName")
+    public WebElement firstNameField;
 
+    @FindBy(id = "lastName")
+    public WebElement lastNameField;
 
+    @FindBy(id = "phone")
+    public WebElement phoneField;
 
+    @FindBy(id = "email")
+    public WebElement emailField;
 
+    @FindBy(id = "btnUpdateProfile")
+    public WebElement updateButton;
 
-    private By deleteAccountButton = By.xpath("//button[text()='Delete Account']");
-    private By btn_DeleteButton = By.xpath("//button[text()='DELETE ACCOUNT']");
-    private By btn_ConfirmDeletion = By.className("p-confirm-dialog-accept.p-button.p-component");
-    private By btn_RejectDeletion = By.className("p-confirm-dialog-reject.p-button-text.p-button.p-component");
+    @FindBy(css = ".alert-success")
+    public WebElement confirmationMessage;
+
+    @FindBy(css = ".alert-danger")
+    public WebElement errorMessage;
+
+    @FindBy(xpath = "//button[text()='Change Password']")
+    public WebElement changePasswordButton;
+
+    @FindBy(xpath = "//button[text()='CHANGE']")
+    public WebElement saveButton;
+
+    @FindBy(id = "currentPassword")
+    public WebElement currentPasswordField;
+
+    @FindBy(id = "newPassword")
+    public WebElement newPasswordField;
+
+    @FindBy(id = "confirmPassword")
+    public WebElement confirmPasswordField;
+
+    @FindBy(xpath = "//button[text()='Profile Photo']")
+    public WebElement profilePhotoButton;
+
+    @FindBy(className = "p-image-preview-indicator")
+    public WebElement btn_profileImagePreview;
+
+    @FindBy(className = "p-image-preview")
+    public WebElement profileImagePreview;
+
+    @FindBy(xpath = "//button[text()='SELECT']")
+    public WebElement profilePhotoSelect;
+
+    @FindBy(css = "input[type='file'][accept='image/*']")
+    public WebElement profileImage;
+
+    @FindBy(xpath = "//button[text()='Delete Account']")
+    public WebElement deleteAccountButton;
+
+    @FindBy(xpath = "//button[text()='DELETE ACCOUNT']")
+    public WebElement btn_DeleteButton;
+
+    @FindBy(css = ".p-confirm-dialog-accept.p-button.p-component")
+    public WebElement btn_ConfirmDeletion;
+
+    @FindBy(css = ".p-confirm-dialog-reject.p-button-text.p-button.p-component")
+    public WebElement btn_RejectDeletion;
+
 
     // Constructor
-    public ProfilePage(WebDriver driver) {
-        this.driver = driver;
+    public ProfilePage() {
+        PageFactory.initElements(Driver.getDriver(), this);
     }
 
-    // ===== Profile Info =====
-    public boolean isProfileInfoDisplayed() {
-        return driver.findElement(firstNameField).isDisplayed();
-    }
-
-    public void updateProfile(String firstName, String lastName, String phone) {
-        driver.findElement(firstNameField).clear();
-        driver.findElement(firstNameField).sendKeys(firstName);
-
-        driver.findElement(lastNameField).clear();
-        driver.findElement(lastNameField).sendKeys(lastName);
-
-        driver.findElement(phoneField).clear();
-        driver.findElement(phoneField).sendKeys(phone);
-    }
-
-    public void clickButton(String buttonName) {
-        switch (buttonName.toLowerCase()) {
-            case "save":
-                driver.findElement(saveButton).click();
-                break;
-            case "change password":
-                driver.findElement(changePasswordButton).click();
-                break;
-            case "profile photo":
-                driver.findElement(profilePhotoButton).click();
-                break;
-            case "delete account":
-                driver.findElement(deleteAccountButton).click();
-                break;
-            default:
-                throw new IllegalArgumentException("Button not recognized: " + buttonName);
-        }
-    }
-
-    public String getConfirmationMessage() {
-        return driver.findElement(confirmationMessage).getText();
-    }
-
-    public String getErrorMessage() {
-        return driver.findElement(errorMessage).getText();
-    }
-
-    // ===== Password Change =====
-    public void changePassword(String currentPass, String newPass, String confirmPass) {
-        driver.findElement(currentPasswordField).sendKeys(currentPass);
-        driver.findElement(newPasswordField).sendKeys(newPass);
-        driver.findElement(confirmPasswordField).sendKeys(confirmPass);
-    }
-
-    // ===== Profile Picture =====
-    public void uploadProfilePicture(String filePath) {
-        driver.findElement(profileImage).sendKeys(filePath);
-    }
-
-    public boolean isProfilePictureDisplayed() {
-        return driver.findElement(profileImage).isDisplayed();
-    }
-
-    // ===== Account Deletion =====
-    public void confirmAccountDeletion() {
-        driver.findElement(btn_DeleteButton).click();
-    }
-
-    public boolean isAccountDeleted() {
-        // Example: check if redirect to login page after deletion
-        return driver.getCurrentUrl().contains("/login");
-    }
 }
