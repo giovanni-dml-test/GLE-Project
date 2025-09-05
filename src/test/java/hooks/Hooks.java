@@ -43,10 +43,6 @@ public class Hooks {
     @After
     public void tearDown(Scenario scenario) {
 
-        if (scenario.isFailed()) {
-            takeScreenshot(scenario);
-        }
-
         if (driver != null) {
             driver.quit();
         }
