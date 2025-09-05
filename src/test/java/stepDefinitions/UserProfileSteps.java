@@ -44,10 +44,10 @@ public class UserProfileSteps {
     @Then("the profile information \\(name, email, phone, etc.) is displayed")
     public void the_profile_information_is_displayed() {
 
-        assertTrue(profilePage.firstNameField.getText().length() > 0);
-        assertTrue(profilePage.lastNameField.getText().length() > 0);
-        assertTrue(profilePage.emailField.getText().length() > 0);
-        assertTrue(profilePage.phoneField.getText().length() > 0);
+        assertTrue(!profilePage.firstNameField.getText().isEmpty());
+        assertTrue(!profilePage.lastNameField.getText().isEmpty());
+        assertTrue(!profilePage.emailField.getText().isEmpty());
+        assertTrue(!profilePage.phoneField.getText().isEmpty());
 
     }
 
