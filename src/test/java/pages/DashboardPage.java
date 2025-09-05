@@ -11,23 +11,41 @@ public class DashboardPage {
 
 
     public DashboardPage() {
-        PageFactory.initElements(Driver.getDriver(), this);
-
+        PageFactory.initElements(Driver.getDriver(), this);}
 
     // Locators
-   
-    
-    }
+
+    @FindBy(xpath ="//span[text()='Dashboard']")
+    private WebElement dashboard;
+
+    @FindBy(xpath ="//span[text()='Adverts']")
+    private WebElement adverts;
+
+    @FindBy(xpath ="//span[text()='Categories']")
+    private WebElement categories ;
+
+    @FindBy(xpath ="//span[text()='Advert Types']")
+    private WebElement advertType;
+
+    @FindBy(xpath ="//span[text()='Users']")
+    private WebElement users;
+
+    @FindBy(xpath ="//span[text()='Tour Requests']")
+    private WebElement tourRequests;
+
+    @FindBy(xpath ="//span[text()='Reports']")
+    private WebElement reports;
+
     @FindBy(xpath = "//span[text()='Back to Site']")
     private WebElement backToSite;
 
-    
+    @FindBy(xpath ="//span[text()='Logout']")
+    private WebElement logout;
 
-
+       //methods
 
     public void goBackTosite(){
-        driver.findElement(backToSite).click();
-
+        backToSite.click();
     }
 
 }
