@@ -16,9 +16,9 @@ public class DBUtils {
      * DBUtils.createConnection(); -> to connect to the database
      */
     public static Connection createConnection() {
-        String url = "jdbc:postgresql://medunna.com:5432/medunna_db_v2";
-        String username="select_user";
-        String password="Medunna_pass_@6";
+        String url = "jdbc:postgresql://64.227.123.49:5432/prettierhomes";
+        String username="techprotester";
+        String password="myPassword";
         try {
             connection = DriverManager.getConnection(url, username, password);
         } catch (SQLException e) {
