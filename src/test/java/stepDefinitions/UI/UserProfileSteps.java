@@ -1,10 +1,7 @@
-package stepDefinitions;
+package stepDefinitions.UI;
 
 import io.cucumber.java.PendingException;
 import io.cucumber.java.en.*;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import pages.DashboardPage;
 import pages.HomePage;
 import pages.LoginPage;
 import pages.ProfilePage;

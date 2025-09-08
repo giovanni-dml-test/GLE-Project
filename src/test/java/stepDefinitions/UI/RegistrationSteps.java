@@ -1,9 +1,6 @@
-package stepDefinitions;
+package stepDefinitions.UI;
 
 import io.cucumber.java.en.*;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import pages.RegistrationPage;
 import utils.ConfigReader;
 import utils.Driver;
