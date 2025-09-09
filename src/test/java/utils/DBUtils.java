@@ -31,7 +31,7 @@ public class DBUtils {
      * DBUtils.executeQuery(String query); -> Execute the query and store is the result set object
      * STATEMENT : is used to write query
      */
-    public static void executeQuery(String query) {
+    public static ResultSet executeQuery(String query) {
         try {
             statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
         } catch (SQLException e) {
@@ -45,6 +45,8 @@ public class DBUtils {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
+
+        return resultSet;
     }
     //    used to close the connectivity
     public static void closeConnection() {
@@ -196,4 +198,19 @@ public class DBUtils {
         }
         return columns;
     }
+
+    /**
+     * Executes an INSERT/UPDATE/DELETE query
+     *
+     * @param query SQL query
+     * @return number of affected rows
+     */
+    public static int executeUpdate(String query) {
+        try {
+            return statement.executeUpdate(query);
+        } catch (SQLException e) {
+            throw new RuntimeException("Error executing update: " + e.getMessage());
+        }
+    }
+
 }
