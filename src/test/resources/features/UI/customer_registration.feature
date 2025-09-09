@@ -1,3 +1,5 @@
+@ui
+
 Feature: Registration form validation
   As a user
   I want to register with valid details

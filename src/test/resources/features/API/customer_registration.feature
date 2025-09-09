@@ -1,3 +1,4 @@
+@api
 Feature: Customer Registration API
   As a new customer
   I want to register via the API
