@@ -1,3 +1,4 @@
+@db
 Feature: Customer Registration - Database Validation
   As a QA Engineer
   I want to validate that customer registration data is stored correctly in the database
