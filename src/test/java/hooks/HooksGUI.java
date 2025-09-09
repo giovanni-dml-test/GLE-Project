@@ -16,7 +16,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class Hooks {
+public class HooksGUI {
 
     private static final WebDriver driver = Driver.getDriver();
 
