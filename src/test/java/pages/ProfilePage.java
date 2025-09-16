@@ -1,6 +1,7 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -9,54 +10,54 @@ import utils.Driver;
 
 public class ProfilePage {
 
-    WebDriver driver;
 
     // Locators (replace with your app’s real IDs/XPaths)
 
-    @FindBy(xpath = "//button[text()='Profile']")
-    public WebElement profileTab;
 
-    @FindBy(id = "firstName")
+    @FindBy(name = "firstName")
     public WebElement firstNameField;
 
-    @FindBy(id = "lastName")
+    @FindBy(name = "lastName")
     public WebElement lastNameField;
 
-    @FindBy(id = "phone")
+    @FindBy(name = "phone")
     public WebElement phoneField;
 
-    @FindBy(id = "email")
+    @FindBy(name = "email")
     public WebElement emailField;
 
-    @FindBy(id = "btnUpdateProfile")
+    @FindBy(xpath = "//button[text()='UPDATE']")
     public WebElement updateButton;
 
-    @FindBy(css = ".alert-success")
+    @FindBy(xpath = "//div[text()='Profile updated successfully']")
     public WebElement confirmationMessage;
 
     @FindBy(css = ".alert-danger")
     public WebElement errorMessage;
 
-    @FindBy(xpath = "//button[text()='Change Password']")
+    @FindBy(xpath = "//*[@data-rr-ui-event-key='change-password']")
     public WebElement changePasswordButton;
 
     @FindBy(xpath = "//button[text()='CHANGE']")
-    public WebElement saveButton;
+    public WebElement changeButton;
 
-    @FindBy(id = "currentPassword")
+    @FindBy(name = "currentPassword")
     public WebElement currentPasswordField;
 
-    @FindBy(id = "newPassword")
+    @FindBy(name = "newPassword")
     public WebElement newPasswordField;
 
-    @FindBy(id = "confirmPassword")
+    @FindBy(name = "repeatNewPassword")
     public WebElement confirmPasswordField;
 
-    @FindBy(xpath = "//button[text()='Profile Photo']")
+    @FindBy(xpath = "//*[@data-rr-ui-event-key='profile-photo']")
     public WebElement profilePhotoButton;
 
     @FindBy(className = "p-image-preview-indicator")
     public WebElement btn_profileImagePreview;
+
+    @FindBy(css = "img[alt='profile-image']")
+    public WebElement image_preview;
 
     @FindBy(className = "p-image-preview")
     public WebElement profileImagePreview;
@@ -64,20 +65,29 @@ public class ProfilePage {
     @FindBy(xpath = "//button[text()='SELECT']")
     public WebElement profilePhotoSelect;
 
+    @FindBy(xpath = "//button[text()='SAVE']")
+    public WebElement saveButton;
+
     @FindBy(css = "input[type='file'][accept='image/*']")
     public WebElement profileImage;
 
-    @FindBy(xpath = "//button[text()='Delete Account']")
+    @FindBy(xpath = "//*[@data-rr-ui-event-key='delete-account']")
     public WebElement deleteAccountButton;
 
-    @FindBy(xpath = "//button[text()='DELETE ACCOUNT']")
+    @FindBy(xpath = "//div[@class='form-submit-button']//button[contains(.,'DELETE ACCOUNT')]")
     public WebElement btn_DeleteButton;
 
-    @FindBy(css = ".p-confirm-dialog-accept.p-button.p-component")
+    @FindBy(xpath = "//*[@aria-label='Yes']")
     public WebElement btn_ConfirmDeletion;
 
     @FindBy(css = ".p-confirm-dialog-reject.p-button-text.p-button.p-component")
     public WebElement btn_RejectDeletion;
+
+    @FindBy(xpath = "//button[text()='DONE']")
+    public WebElement done_Button;
+
+    @FindBy(name = "password")
+    public WebElement enter_your_password_on_delete;
 
 
     // Constructor
