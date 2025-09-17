@@ -17,7 +17,7 @@ public class UserManagementPage {
     @FindBy(xpath = "//input[@name='search']")
     public WebElement searchBox;
 
-    @FindBy(xpath = "//button[@class ='search-button btn btn-outline-secondary'")
+    @FindBy(xpath = "//button[@class='search-button btn btn-outline-secondary']")
     public WebElement searchButton;
 
     // User table itself
@@ -49,12 +49,18 @@ public class UserManagementPage {
     public List<WebElement> actionButtons;
 
     // Example: Delete button in first row
-    @FindBy(xpath = "(//tbody[@class='p-datatable-tbody']//tr[1]//button)[2]")
+    @FindBy(xpath = "(//tbody[@class='p-datatable-tbody']//tr[1]//button)[1]")
     public WebElement firstRowDeleteButton;
 
+    // Example: Delete button in first row
+    @FindBy(xpath = "(//tbody[@class='p-datatable-tbody']//tr[1]//button)[2]")
+    public WebElement firstRowEditButton;
 
+    @FindBy(xpath = "//div[text()='User type save successfully']")
+    public WebElement successMessage;
 
-
+    @FindBy(xpath = "//*[text()='User deleted successfully']")
+    public WebElement success_deletion_message;
 
     // --- Constructor ---
     public UserManagementPage() {

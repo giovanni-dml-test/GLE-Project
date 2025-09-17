@@ -25,7 +25,7 @@ public class HooksGUI {
     public void setUp(Scenario scenario) {
         WebDriver driver = Driver.getDriver();
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(35));
         driver.manage().timeouts().pageLoadTimeout(java.time.Duration.ofSeconds(60));
         System.out.println("---- Test Started ----");
 
