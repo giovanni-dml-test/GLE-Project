@@ -14,18 +14,19 @@ import utils.ExtentReportUtils;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.time.Duration;
 import java.util.Date;
 
-public class Hooks {
+public class HooksGUI {
 
-    private static final WebDriver driver = Driver.getDriver();
+
 
     @Before
     public void setUp(Scenario scenario) {
-
+        WebDriver driver = Driver.getDriver();
         driver.manage().window().maximize();
-
-        driver.manage().timeouts().pageLoadTimeout(java.time.Duration.ofSeconds(10));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        driver.manage().timeouts().pageLoadTimeout(java.time.Duration.ofSeconds(60));
         System.out.println("---- Test Started ----");
 
         ExtentReportUtils.createTestReport(scenario.getName(), "test description");
@@ -43,14 +44,15 @@ public class Hooks {
     @After
     public void tearDown(Scenario scenario) {
 
-        if (driver != null) {
-            driver.quit();
+        if (Driver.getDriver() != null) {
+            Driver.closeDriver();
         }
+
     }
 
     private void takeScreenshot(Scenario scenario) {
         try {
-            File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+            File screenshot = ((TakesScreenshot) Driver.getDriver()).getScreenshotAs(OutputType.FILE);
             String timestamp = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());
             String path = System.getProperty("user.dir") + "/test-screenshots/" + timestamp + "-failed.png";
 

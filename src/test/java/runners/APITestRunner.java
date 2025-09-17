@@ -16,7 +16,8 @@ import org.junit.runner.RunWith;
         monochrome = true,//makes the console reports more readable
         features = "./src/test/resources/features", //path of the features folder
         glue = {"stepDefinitions", "hooks"}, //path of the step definitions folder and (hooks folder if needed)
-        dryRun = false //generate the missing step definitions only. Do not run the existing step definitions
+        dryRun = false, //generate the missing step definitions only. Do not run the existing step definitions
+        tags = "@api" //only run scenarios with @api tag
 
 )
 

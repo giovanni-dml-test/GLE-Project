@@ -33,7 +33,7 @@ public class RegistrationPage {
     @FindBy(id = "terms")
     public WebElement termsCheckbox;
 
-    @FindBy(xpath = "//button[text()='Register']")
+    @FindBy(xpath = "//button[text()='REGISTER']")
     public WebElement registerButton;
 
     @FindBy(xpath = "//div[@class='p-toast-detail' and text()='E-mail already exists.']")
@@ -42,23 +42,46 @@ public class RegistrationPage {
     @FindBy(xpath = "//div[@class='p-toast-detail' and text()='Your registration has been completed successfully. Please to activate your account, click on the activation link sent to your e-mail.']")
     public WebElement successMessage;
 
-    @FindBy(xpath = "//span[text()='First name is required']")
+    @FindBy(xpath = "//div[text()='First name is required']")
     public WebElement firstNameError;
 
-    @FindBy(xpath = "//span[text()='Last name is required']")
+    @FindBy(xpath = "//div[text()='Last name is required']")
     public WebElement lastNameError;
 
-    @FindBy(xpath = "//span[text()='Phone is required']")
+    @FindBy(xpath = "//div[text()='Phone is required']")
     public WebElement phoneError;
 
-    @FindBy(xpath = "//span[text()='Email is required']")
+    @FindBy(xpath = "//div[text()='Email is required']")
     public WebElement emailError;
 
-    @FindBy(xpath = "//span[text()='Password is required']")
+    @FindBy(xpath = "//div[text()='Invalid email']")
+    public WebElement invalidEmailError;
+
+    @FindBy(xpath = "//div[text()='Password is required']")
     public WebElement passwordError;
 
-    @FindBy(xpath = "//span[text()='Confirm password is required']")
+    @FindBy(xpath = "//div[text()='Confirm password is required']")
     public WebElement confirmPasswordError;
+
+    @FindBy(xpath = "//div[text()='At least 8 characters']")
+    public WebElement passwordLengthError;
+
+    @FindBy(xpath = "//div[text()='One uppercase char']")
+    public WebElement passwordUppercaseError;
+
+    @FindBy(xpath = "//div[text()='One special character']")
+    public WebElement passwordSpecialCharError;
+
+    @FindBy(xpath = "//div[text()='One lowercase char']")
+    public WebElement passwordLowercaseError;
+
+    @FindBy(xpath = "//div[text()='One number']")
+    public WebElement passwordNumberError;
+
+    @FindBy(xpath = "//div[text()='Passwords must match']")
+    public WebElement passwordsMustMatchError;
+
+
 
 
     // Constructor
