@@ -5,7 +5,7 @@ Feature: Login functionality
   so that I can access my account with valid credentials
 
   Background:
-    Given the user goes to the website "http://64.227.123.49/"
+    Given the user goes to the website "http://64.227.123.49"
 
   @TC-01
   Scenario Outline: TC_01-Verify email accepts only valid format

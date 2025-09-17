@@ -1,14 +1,16 @@
 package pages;
 
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utils.Driver;
 
 public class HomePage {
-    public HomePage()
 
-    {PageFactory.initElements(Driver.getDriver(), this);}
+    public HomePage() {
+        PageFactory.initElements(Driver.getDriver(), this);
+    }
 
 
     @FindBy(xpath = "//div[@class='user-logo-nav navbar-nav']")
@@ -18,7 +20,7 @@ public class HomePage {
     public WebElement myProfile;
 
     @FindBy(xpath = "//span[text()='My Adverts']")
-    public WebElement myAdverts ;
+    public WebElement myAdverts;
 
     @FindBy(xpath = "//span[text()='My Favorites']")
     public WebElement myFavorites;
@@ -26,7 +28,7 @@ public class HomePage {
     @FindBy(xpath = "//span[text()='My Tour Requests']")
     public WebElement myTourRequests;
 
-    @FindBy(xpath ="//span[text()='Control Panel']")
+    @FindBy(xpath = "//span[text()='Control Panel']")
     public WebElement controlPanel;
 
     @FindBy(xpath = "//*[text()='Logout']")
@@ -54,13 +56,13 @@ public class HomePage {
     @FindBy(xpath = "//div[class='language-dropdown nav-item show dropdown']")
     public WebElement languageDropdown;
 
-    @FindBy(xpath= "//input[@placeholder='Search']")
-    public  WebElement searchbar;
+    @FindBy(xpath = "//input[@placeholder='Search']")
+    public WebElement searchbar;
 
-    @FindBy(xpath="//button[@class='btn btn-primary']")
+    @FindBy(xpath = "//button[@class='btn btn-primary']")
     public WebElement searchIcon;
 
-    @FindBy(xpath ="(//button[text()='Rent'])[1]")
+    @FindBy(xpath = "(//button[text()='Rent'])[1]")
     public WebElement rentTab;
 
     @FindBy(xpath = "//button[text()='Sale']")
@@ -87,10 +89,9 @@ public class HomePage {
     @FindBy(xpath = "//button[text()='SHOP']")
     public WebElement shopTab;
 
- public void clickLogin(){
-     login.click();
- }
-
+    public void clickLogin() {
+        login.click();
+    }
 
 
 }
