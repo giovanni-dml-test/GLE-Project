@@ -43,7 +43,7 @@ public class UserManagementEditPage {
     @FindBy(xpath = "//div[@class='p-toast-detail' and contains(text(),'This user cannot be updated')]")
     public WebElement errorMessage;
 
-    @FindBy(xpath = "//button[text()='Yes']")
+    @FindBy(xpath = "//*[@aria-label='Yes']")
     public WebElement yesButton;
 
     @FindBy(xpath = "//button[text()='No']")
