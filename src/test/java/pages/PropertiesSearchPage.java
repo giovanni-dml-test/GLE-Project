@@ -38,6 +38,12 @@ public class PropertiesSearchPage {
     @FindBy(xpath = "//button[text()='Search']")
     public WebElement SearchButton;
 
+//click on a property
+   @FindBy(css=".card-img-top")
+    public WebElement propertyClick;
+
+
+
 
 
 
