@@ -1,5 +1,6 @@
 package stepDefinitions.UI;
 
+
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -9,6 +10,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import pages.HomePage;
 import pages.LoginPage;
+import utils.ConfigReader;
 import utils.Driver;
 
 import java.util.List;
@@ -68,7 +70,7 @@ public class Customer_Login_stepDefs {
     @When("enters a valid email in the Email field")
     public void enters_a_valid_email_in_the_email_field() {
 
-        loginPage.enterUsername("ajeeshacus@gmail.com");
+        loginPage.enterUsername(ConfigReader.getProperty("customer_email"));
 
     }
 
@@ -77,13 +79,15 @@ public class Customer_Login_stepDefs {
         loginPage.enterPassword("");
 
     }
+
     @Given("Clicks on the emailfield")
     public void clicks_on_the_emailfield() {
         loginPage.clickOnEmailField();
     }
+
     @Given("clicks on LoginButton")
     public void clicks_on_login_button() {
-       loginPage.clickLoginButton();
+        loginPage.clickLoginButton();
     }
 
     @Then("an error message {string} should appear")
@@ -96,7 +100,7 @@ public class Customer_Login_stepDefs {
 
     @When("the user enters a valid password")
     public void the_user_enters_a_valid_password() {
-        loginPage.enterPassword("Ajeeshacus@123");
+        loginPage.enterPassword(ConfigReader.getProperty("customer_email"));
 
     }
 
@@ -108,7 +112,7 @@ public class Customer_Login_stepDefs {
 
     @When("enters a valid password in the Password field")
     public void enters_a_valid_password_in_the_password_field() {
-        loginPage.enterPassword("Ajeeshacus@123");
+        loginPage.enterPassword(ConfigReader.getProperty("customer_password"));
 
     }
 
@@ -139,7 +143,6 @@ public class Customer_Login_stepDefs {
         Assert.assertTrue("Expected message to contain: \"" + expectedPartialMessage + "\" but got: \"" + actualMessage + "\"", actualMessage.contains(expectedPartialMessage));
 
     }
-
 
 
 }

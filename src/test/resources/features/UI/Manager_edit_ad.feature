@@ -1,4 +1,3 @@
-
 @Manager_edit_advert
 
 Feature: Manager Adverts
@@ -10,7 +9,7 @@ Feature: Manager Adverts
     Given Manager navigates to the site "http://64.227.123.49/"
     And Manager is logged in the System
 
-@TC-01
+  @TC-01
   Scenario Outline: TC_01 - Verify Manager can view and update an advert
     When Clicks on the BacktoSite
     And the Manager clicks on Profile icon
@@ -24,8 +23,8 @@ Feature: Manager Adverts
     Then the updated advert with Title "<Title>", Description "<Description>", and Address "<Address>" should be displayed
 
     Examples:
-      | Title           | Description                | Address            |
-      | Modern Apartment| Spacious 2BHK apartment   | 123 Main Street    |
+      | Title            | Description             | Address         |
+      | Modern Apartment | Spacious 2BHK apartment | 123 Main Street |
 
   @TC-02
   Scenario Outline: TC_02 - Verify Manager can delete an advert
@@ -37,5 +36,5 @@ Feature: Manager Adverts
     Then the advert with Title "<Title>" should no longer appear in the "MyAdverts" list
 
     Examples:
-      | Title           |
-      | Modern Apartment|
+      | Title            |
+      | Modern Apartment |
