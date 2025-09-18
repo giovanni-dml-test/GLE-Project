@@ -4,7 +4,6 @@ package stepDefinitions.UI;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -14,6 +13,8 @@ import utils.ConfigReader;
 import utils.Driver;
 
 import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class Customer_Login_stepDefs {
     WebDriver driver = Driver.getDriver();
@@ -51,9 +52,9 @@ public class Customer_Login_stepDefs {
 
         if (expectedResult.equalsIgnoreCase("Invalid email")) {
             String actualMessage = loginPage.getInvalidEmailMessage();
-            Assert.assertTrue(
-                    " Expected 'Invalid email' but got: " + actualMessage,
-                    actualMessage.toLowerCase().contains("invalid email"));
+            assertTrue(
+                    actualMessage.toLowerCase().contains("invalid email"),
+                    " Expected 'Invalid email' but got: " + actualMessage);
 
         } else {
             //expect No error message
@@ -61,7 +62,7 @@ public class Customer_Login_stepDefs {
                     .findElements(By.cssSelector("div.form-feedback.invalid-feedback"));
 
             boolean isErrorAbsent = errorElements.isEmpty() || !errorElements.get(0).isDisplayed();
-            Assert.assertTrue(" Error message was displayed when it should not", isErrorAbsent);
+            assertTrue( isErrorAbsent," Error message was displayed when it should not");
         }
 
 
@@ -93,7 +94,7 @@ public class Customer_Login_stepDefs {
     @Then("an error message {string} should appear")
     public void an_error_message_should_appear(String expectedMessage) {
         String actualMessage = loginPage.getPasswordRequiredMessage();
-        Assert.assertEquals(expectedMessage, actualMessage);
+        assertEquals(expectedMessage, actualMessage);
 
 
     }
@@ -107,7 +108,7 @@ public class Customer_Login_stepDefs {
     @Then("the error message should disappear")
     public void the_error_message_should_disappear() {
 
-        Assert.assertFalse("Password error message should disappear", loginPage.isPasswordErrorDisplayed());
+        assertFalse( loginPage.isPasswordErrorDisplayed(),"Password error message should disappear");
     }
 
     @When("enters a valid password in the Password field")
@@ -124,7 +125,7 @@ public class Customer_Login_stepDefs {
 
     @Then("redirected to the Homepage")
     public void redirected_to_the_homepage() {
-        Assert.assertTrue(homePage.profileIcon.isDisplayed());
+        assertTrue(homePage.profileIcon.isDisplayed());
 
 
     }
@@ -140,7 +141,7 @@ public class Customer_Login_stepDefs {
 
         String actualMessage = loginPage.getInvalidLoginMessage();
 
-        Assert.assertTrue("Expected message to contain: \"" + expectedPartialMessage + "\" but got: \"" + actualMessage + "\"", actualMessage.contains(expectedPartialMessage));
+        assertTrue(actualMessage.contains(expectedPartialMessage), "Expected message to contain: \"" + expectedPartialMessage + "\" but got: \"" + actualMessage + "\"");
 
     }
 

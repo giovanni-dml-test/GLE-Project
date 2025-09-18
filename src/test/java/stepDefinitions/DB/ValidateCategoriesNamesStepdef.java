@@ -9,7 +9,8 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.*;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class ValidateCategoriesNamesStepdef {
     private Connection connection;
@@ -54,7 +55,7 @@ public class ValidateCategoriesNamesStepdef {
         System.out.println("actual columns " + actualColumns);
 
         for (String column : expectedColumns) {
-            assertTrue("Column missing: " + column, actualColumns.contains(column));
+            assertTrue(actualColumns.contains(column), "Column missing: " + column);
 
         }
 
@@ -74,29 +75,29 @@ public class ValidateCategoriesNamesStepdef {
 
             // ID validation (must not be NULL)
             Object id = resultSet.getObject("id");
-            assertNotNull("ID should not be null", id);
+            assertNotNull( id,"ID should not be null");
 
             // created_at, updated_at, title validation
-            assertNotNull("created_at should not be null", resultSet.getTimestamp("created_at"));
+            assertNotNull( resultSet.getTimestamp("created_at"),"created_at should not be null");
             String title = resultSet.getString("title");
-            assertNotNull("title should not be null", title);
-            assertFalse("title should not be empty", title.trim().isEmpty());
+            assertNotNull( title,"title should not be null");
+            assertFalse(title.trim().isEmpty(),"title should not be empty");
 
             // boolean validation
             boolean isActive = resultSet.getBoolean("is_active");
             boolean builtIn = resultSet.getBoolean("built_in");
 
             //  validate non-null
-            assertFalse("is_active column was NULL", resultSet.wasNull());
+            assertFalse( resultSet.wasNull(),"is_active column was NULL");
 
             // slug and icon validation
             String slug = resultSet.getString("slug");
-            assertNotNull("slug should not be null", slug);
-            assertFalse("slug should not be empty", slug.trim().isEmpty());
+            assertNotNull( slug,"slug should not be null");
+            assertFalse( slug.trim().isEmpty(),"slug should not be empty");
 
             String icon = resultSet.getString("icon");
             if (icon != null) {  // optional column
-                assertFalse("icon should not be empty if present", icon.trim().isEmpty());
+                assertFalse( icon.trim().isEmpty(),"icon should not be empty if present");
             }
         }
 

@@ -1,4 +1,4 @@
-@api
+@api_ajeesha
 Feature: AdvertType_controller
 
   Scenario: Get all advert types

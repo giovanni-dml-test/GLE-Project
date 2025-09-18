@@ -15,7 +15,7 @@ import java.util.Map;
 
 import static org.hamcrest.Matchers.*;
 import static org.hamcrest.CoreMatchers.notNullValue;
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static utils.GetLandAuthentication.generateToken;
 
 
