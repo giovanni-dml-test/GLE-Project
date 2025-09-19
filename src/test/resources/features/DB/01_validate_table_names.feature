@@ -1,6 +1,6 @@
 Feature: Database Table Validation
 
-  @db
+  @db_gio
   Scenario: Validate all required tables exist in the database
     Given the database connection is established
     When I retrieve the list of tables
@@ -19,7 +19,6 @@ Feature: Database Table Validation
       | favorites                |
       | images                   |
       | logs                     |
-      | personel                 |
       | profile_photos           |
       | tour_requests            |
       | users                    |

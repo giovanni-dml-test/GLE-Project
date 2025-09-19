@@ -2,8 +2,12 @@ package utils;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -32,17 +36,18 @@ public class ExtentReportUtils {
 
 
 //        ************** ADDING CUSTOM SYSTEM INFORMATION ***************
-        extentReports.setSystemInfo("Application Name", "Apple M1 Unit");
-        extentReports.setSystemInfo("Test Environment", "Smoke Suite");
+        extentReports.setSystemInfo("Application Name", "Get Land Estate");
+        extentReports.setSystemInfo("Test Environment", "Test Automation GUI");
         extentReports.setSystemInfo("Browser", "Chrome");
-        extentReports.setSystemInfo("Team Name", "Job Center");
-        extentReports.setSystemInfo("QA", "Saima");
+        extentReports.setSystemInfo("Team Name", "Ajeesha & Giovanni");
+        extentReports.setSystemInfo("SDET", "Ajeesha");
+        extentReports.setSystemInfo("SDET", "Giovanni");
         extentReports.setSystemInfo("Feature", "Registration");
-        extentReports.setSystemInfo("User Story", "US0036");
+        extentReports.setSystemInfo("User Story", "US_01");
 
 //        *******************ADDING CUSTOM ABOUT DOCUMENTS *******************
-        extentSparkReporter.config().setReportName("Smoke Report");
-        extentSparkReporter.config().setDocumentTitle("Smoke Suite");
+        extentSparkReporter.config().setReportName("GUI Test Automation Report");
+        extentSparkReporter.config().setDocumentTitle("GUI Test Suite");
 
 
         // Now connect the reporter and the reports
@@ -86,6 +91,12 @@ public class ExtentReportUtils {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public static void logStepWithScreenshot(WebDriver driver, String message) {
+        String base64Screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BASE64);
+        extentTest.info(message,
+                MediaEntityBuilder.createScreenCaptureFromBase64String(base64Screenshot).build());
     }
 
     /*

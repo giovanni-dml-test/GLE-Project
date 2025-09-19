@@ -10,9 +10,9 @@ Feature: User API Validation
       {
         "firstName": "testUser",
         "lastName": "lastNameTest",
-        "phone": "(231) 321-6541",
+        "phone": "(231) 321-6545",
         "password": "Test@123",
-        "email": "testuser@mail.com"
+        "email": "testuser@test.com"
       }
       """
     Then the response status code should be 200

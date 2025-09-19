@@ -16,11 +16,12 @@ import java.util.Date;
 
 public class HooksGUI {
 
+    private WebDriver driver;
 
 
     @Before
     public void setUp(Scenario scenario) {
-        WebDriver driver = Driver.getDriver();
+        driver = Driver.getDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(35));
         driver.manage().timeouts().pageLoadTimeout(java.time.Duration.ofSeconds(60));
@@ -32,9 +33,11 @@ public class HooksGUI {
     @AfterStep
     public void afterStep(Scenario scenario) {
         if (scenario.isFailed()) {
-            takeScreenshot(scenario);
+            ExtentReportUtils.logStepWithScreenshot(driver, "Step failed: " + scenario.getName());
+
         } else {
-            ExtentReportUtils.passAndCaptureScreenshot("Step passed: " + scenario.getName());
+            ExtentReportUtils.logStepWithScreenshot(driver, "Step passed: " + scenario.getName());
+
         }
     }
 
