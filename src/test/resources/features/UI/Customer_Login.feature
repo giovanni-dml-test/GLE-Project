@@ -1,4 +1,4 @@
-@login_functionality
+@ui_ajeesha
 
 Feature: Login functionality
   As a registered customer, I want to login securely
@@ -9,7 +9,7 @@ Feature: Login functionality
 
   @TC-01
   Scenario Outline: TC_01-Verify email accepts only valid format
-    And clicks on the Login button
+    When clicks on the Login button
     And enters "<email>" in the Email field
     And clicks on the password Field
     Then the system should "<result>"
@@ -22,7 +22,7 @@ Feature: Login functionality
 
   @TC-02
   Scenario: TC_02-Verify password field is mandatory
-    And clicks on the Login button
+    When clicks on the Login button
     And leaves the Password field blank
     And Clicks on the emailfield
     Then an error message "Password is required" should appear
@@ -31,15 +31,15 @@ Feature: Login functionality
 
   @TC-03
   Scenario: TC_03-Customer-Verify Login button is disabled until valid inputs are entered
-    And clicks on the Login button
+    When clicks on the Login button
     And enters a valid email in the Email field
     And enters a valid password in the Password field
     And clicks the Login button
-    And redirected to the Homepage
+    Then redirected to the Homepage
 
   @TC-04
   Scenario Outline: TC-04-Verify login attempts fails with invalid credentials
-    And clicks on the Login button
+    When clicks on the Login button
     And enters "<email>" in the Email field
     And enters "<password>" in the Password field
     And clicks the Login button
@@ -52,8 +52,8 @@ Feature: Login functionality
 
   @TC-05
   Scenario: TC_05-Verify successful login with valid email and password
-    And clicks on the Login button
+    When clicks on the Login button
     And enters a valid email in the Email field
     And enters a valid password in the Password field
     And clicks the Login button
-    And redirected to the Homepage
+    Then redirected to the Homepage

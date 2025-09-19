@@ -3,7 +3,6 @@ package stepDefinitions.UI;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.junit.Assert;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -16,7 +15,11 @@ import utils.Driver;
 import java.time.Duration;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+
 public class Manager_edit_ad_stepdef {
+
 
     WebDriver driver = Driver.getDriver();
     LoginPage loginPage = new LoginPage();
@@ -115,9 +118,9 @@ public class Manager_edit_ad_stepdef {
         String actualDescription = propertyDetailPage.advertDescription.getText().trim();
         String actualAddress = propertyDetailPage.advertAddress.getText().trim();
 
-        Assert.assertEquals(title, actualTitle);
-        Assert.assertEquals(description, actualDescription);
-        Assert.assertEquals(address, actualAddress);
+        assertEquals(title, actualTitle);
+        assertEquals(description, actualDescription);
+        assertEquals(address, actualAddress);
 
 
     }
@@ -141,7 +144,7 @@ public class Manager_edit_ad_stepdef {
         List<WebElement> adverts = myAdvertsPage.allPropertyTitles;
         for (WebElement advert : adverts) {
 
-            Assert.assertNotEquals(title, advert.getText().trim());
+            assertNotEquals(title, advert.getText().trim());
 
         }
 

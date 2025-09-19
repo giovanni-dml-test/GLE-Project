@@ -4,7 +4,6 @@ import io.cucumber.java.DataTableType;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -20,8 +19,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 
 public class GuestUserStepdef {
+
     WebDriver driver = Driver.getDriver();
 
     HomePage homePage;
@@ -98,8 +100,8 @@ public class GuestUserStepdef {
         List<String> expectedDetails = dataTable.asList();
         for (String details : expectedDetails) {
             WebElement element = detailsMap.get(details.toLowerCase());
-            Assert.assertNotNull("unknown Detail " + details, element);
-            Assert.assertTrue(details + "is not displayed ", element.isDisplayed());
+            assertNotNull( details, element+"unknown Detail " );
+            assertTrue(element.isDisplayed(), details + "is not displayed ");
         }
 
 
@@ -123,7 +125,7 @@ public class GuestUserStepdef {
                 ExpectedConditions.visibilityOf(propertyDetailPage.warningMessage)
         );
         String actualMessage = warningMessageElement.getText();
-        Assert.assertEquals(expectedMessage, actualMessage);
+        assertEquals(expectedMessage, actualMessage);
 
     }
 
@@ -147,7 +149,7 @@ public class GuestUserStepdef {
     @Then("the system should display a message {string}")
     public void the_system_should_display_a_message(String expectedMessage) {
         String actualMessage = propertyDetailPage.warningMessage.getText();
-        Assert.assertEquals(expectedMessage, actualMessage);
+        assertEquals(expectedMessage, actualMessage);
 
 
     }

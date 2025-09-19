@@ -1,5 +1,5 @@
+@db_ajeesha
 
-@Category_table
 Feature: Validate Categories Table
 
   As a QA Engineer
