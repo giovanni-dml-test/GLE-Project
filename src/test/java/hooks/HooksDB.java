@@ -1,7 +1,9 @@
 package hooks;
 
+import io.cucumber.java.AfterAll;
 import io.cucumber.java.Before;
 import io.cucumber.java.After;
+import utils.ExtentReportUtils;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -32,6 +34,8 @@ public class HooksDB {
         }
     }
 
+
+
     @After("@db")
     public void tearDownDB() {
         try {
@@ -45,4 +49,12 @@ public class HooksDB {
             throw new RuntimeException("Could not close database connection: " + e.getMessage());
         }
     }
+
+    @AfterAll
+    public static void ReportCreation() {
+
+        ExtentReportUtils.flush();
+
+    }
+
 }

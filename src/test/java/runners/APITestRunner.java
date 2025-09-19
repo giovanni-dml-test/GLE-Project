@@ -17,7 +17,7 @@ import org.junit.runner.RunWith;
         features = "./src/test/resources/features", //path of the features folder
         glue = {"stepDefinitions", "hooks"}, //path of the step definitions folder and (hooks folder if needed)
         dryRun = false, //generate the missing step definitions only. Do not run the existing step definitions
-        tags = "@api" //only run scenarios with @api tag
+        tags = "@api_gio" //only run scenarios with @api tag
 
 )
 
