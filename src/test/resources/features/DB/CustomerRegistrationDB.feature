@@ -1,4 +1,3 @@
-@db
 Feature: Customer Registration - Database Validation
   As a QA Engineer
   I want to validate that customer registration data is stored correctly in the database
@@ -7,7 +6,7 @@ Feature: Customer Registration - Database Validation
   Background:
     Given a database connection is established
 
-  @db @positive
+ @positive
   Scenario: Verify customer is stored in DB after successful registration
     Given a new customer registers via API with the following details:
       | firstName | lastName | phone      | email              | password     |
@@ -17,7 +16,7 @@ Feature: Customer Registration - Database Validation
     And the customer last name should be "Doe"
     And the customer phone should be "1234567890"
 
-  @db @negative
+ @negative
   Scenario: Verify customer is NOT stored in DB with duplicate email
     Given a new customer registers via API with the following details:
       | firstName | lastName | phone      | email              | password     |
@@ -25,7 +24,7 @@ Feature: Customer Registration - Database Validation
     Then the registration API should return status 400
     And the customer with email "john.doe@test.com" should still have first name "John"
 
-  @db @negative
+ @negative
   Scenario: Verify customer is NOT stored in DB with invalid email format
     Given a new customer registers via API with the following details:
       | firstName | lastName | phone      | email     | password     |
@@ -33,7 +32,7 @@ Feature: Customer Registration - Database Validation
     Then the registration API should return status 400
     And the customer with email "bobtest" should not exist in the database
 
-  @db @cleanup
+ @cleanup
   Scenario: Clean up test data from DB
     Given I delete the customer with email "john.doe@test.com" from the database
     Then the customer with email "john.doe@test.com" should not exist in the database

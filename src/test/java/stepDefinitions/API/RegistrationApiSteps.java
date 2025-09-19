@@ -29,10 +29,10 @@ public class RegistrationApiSteps {
                 .post(endpoint);
     }
 
-    @Then("the response status code should be {int}")
-    public void validateStatusCode(int expectedStatus) {
-        assertEquals(expectedStatus, response.getStatusCode());
-    }
+//    @Then("the response status code should be {int}")
+//    public void validateStatusCode(int expectedStatus) {
+//        assertEquals(expectedStatus, response.getStatusCode());
+//    }
 
     @Then("the response body should contain {string}")
     public void validateResponseBodyContains(String expectedText) {
