@@ -1,6 +1,5 @@
 package stepDefinitions.UI;
 
-import io.cucumber.java.PendingException;
 import io.cucumber.java.en.*;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
@@ -72,7 +71,7 @@ public class RegistrationSteps {
 
     @When("the user enters a valid Password")
     public void enterValidPassword() {
-        registrationPage.passwordInput.sendKeys(ConfigReader.getProperty("valid_password"));
+        registrationPage.passwordInput.sendKeys(ConfigReader.getProperty("current_password"));
     }
 
     @When("enters a different Confirm Password")
@@ -238,9 +237,9 @@ public class RegistrationSteps {
         registrationPage.firstNameInput.sendKeys("John");
         registrationPage.lastNameInput.sendKeys("Doe");
         JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
-        js.executeScript("arguments[0].value='1234567890';", registrationPage.phoneInput);
+        js.executeScript("arguments[0].value='2351625677';", registrationPage.phoneInput);
         registrationPage.phoneInput.sendKeys(Keys.TAB);
-        registrationPage.emailInput.sendKeys("test@test.com");
+        registrationPage.emailInput.sendKeys("test32432@test.com");
         registrationPage.passwordInput.sendKeys("ValidPass123!");
         registrationPage.confirmPasswordInput.sendKeys("ValidPass123!");
     }

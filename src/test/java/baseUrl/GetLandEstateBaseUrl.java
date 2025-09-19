@@ -8,7 +8,7 @@ import static utils.GetLandAuthentication.generateToken;
 
 public class GetLandEstateBaseUrl {
 
-    protected static RequestSpecification spec;
+    public static RequestSpecification spec;
     private static final String BASE_URL = "http://64.227.123.49:8092/";
 
     public static void setUp() {
