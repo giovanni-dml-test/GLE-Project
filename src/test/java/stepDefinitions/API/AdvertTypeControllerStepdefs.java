@@ -21,6 +21,7 @@ import static utils.GetLandAuthentication.generateToken;
 
 public class AdvertTypeControllerStepdefs extends GetLandEstateBaseUrl {
 
+
     Response response;
     private static Integer advertTypeId;   // to store created id
     private static String advertTitle; // to store created title

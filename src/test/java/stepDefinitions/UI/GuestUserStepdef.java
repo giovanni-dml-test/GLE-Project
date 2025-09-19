@@ -23,6 +23,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 
 public class GuestUserStepdef {
+
     WebDriver driver = Driver.getDriver();
 
     HomePage homePage;

@@ -17,6 +17,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class Customer_Login_stepDefs {
+
     WebDriver driver = Driver.getDriver();
 
     LoginPage loginPage = new LoginPage();

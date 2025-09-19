@@ -20,6 +20,7 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 public class Manager_edit_ad_stepdef {
 
+
     WebDriver driver = Driver.getDriver();
     LoginPage loginPage = new LoginPage();
     DashboardPage dashboardPage = new DashboardPage();

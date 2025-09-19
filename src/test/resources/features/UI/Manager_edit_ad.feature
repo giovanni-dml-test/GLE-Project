@@ -1,4 +1,4 @@
-@ui_ajeesha @Manager_edit_advert
+@ui_ajeesha
 
 Feature: Manager Adverts
   As a Manager

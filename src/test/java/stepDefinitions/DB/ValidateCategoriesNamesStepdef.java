@@ -13,6 +13,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ValidateCategoriesNamesStepdef {
+
     private Connection connection;
     private Statement statement;
     private ResultSet resultSet;

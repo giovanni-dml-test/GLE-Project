@@ -1,4 +1,4 @@
-@ui_ajeesha @login_functionality
+@ui_ajeesha
 
 Feature: Login functionality
   As a registered customer, I want to login securely

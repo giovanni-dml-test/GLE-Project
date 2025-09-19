@@ -1,4 +1,4 @@
-@ui_ajeesha @GuestUser
+@ui_ajeesha
 
 Feature: Guest User Functionality
   As a guest user
