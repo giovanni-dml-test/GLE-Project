@@ -1,9 +1,6 @@
 package hooks;
 
-import io.cucumber.java.After;
-import io.cucumber.java.AfterStep;
-import io.cucumber.java.Scenario;
-import io.cucumber.java.Before;
+import io.cucumber.java.*;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -62,6 +59,13 @@ public class HooksGUI {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @AfterAll
+    public static void ReportCreation() {
+
+        ExtentReportUtils.flush();
+
     }
 
 }

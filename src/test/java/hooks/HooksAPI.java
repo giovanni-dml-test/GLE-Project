@@ -1,22 +1,26 @@
 package hooks;
 
+import baseUrl.GetLandEstateBaseUrl;
 import io.cucumber.java.After;
+import io.cucumber.java.AfterAll;
 import io.cucumber.java.Before;
+import utils.ExtentReportUtils;
 
-import static io.restassured.RestAssured.baseURI;
 import static io.restassured.RestAssured.given;
-
-import static baseUrl.GetLandEstateBaseUrl.setUp;
 
 
 public class HooksAPI {
 
 
-        @Before("@api")
+        @Before("@api_gio")
         public void setUpApi() {
 
             GetLandEstateBaseUrl.setUp();
+            ExtentReportUtils.createTestReport("Test Report", "User Controller");
         }
+
+
+
 
        @After("@api")
         public void cleanUpTestData() {
@@ -41,7 +45,12 @@ public class HooksAPI {
 
         }
 
+        @AfterAll
+                public static void ReportCreation() {
 
+            ExtentReportUtils.flush();
+
+        }
 
 
     }
