@@ -237,9 +237,9 @@ public class RegistrationSteps {
         registrationPage.firstNameInput.sendKeys("John");
         registrationPage.lastNameInput.sendKeys("Doe");
         JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
-        js.executeScript("arguments[0].value='2351625677';", registrationPage.phoneInput);
+        js.executeScript("arguments[0].value='13594454321';", registrationPage.phoneInput);
         registrationPage.phoneInput.sendKeys(Keys.TAB);
-        registrationPage.emailInput.sendKeys("test32432@test.com");
+        registrationPage.emailInput.sendKeys("test784313@test.com");
         registrationPage.passwordInput.sendKeys("ValidPass123!");
         registrationPage.confirmPasswordInput.sendKeys("ValidPass123!");
     }

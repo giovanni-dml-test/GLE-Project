@@ -1,6 +1,9 @@
 package stepDefinitions.API;
 
 import baseUrl.GetLandEstateBaseUrl;
+import hooks.HooksAPI;
+import io.cucumber.java.After;
+import io.cucumber.java.AfterAll;
 import io.cucumber.java.en.*;
 import io.restassured.response.Response;
 
@@ -10,6 +13,7 @@ import static org.junit.Assert.*;
 
 public class user_controller {
 
+    private HooksAPI hooksAPI;
     private Response response;
 
     @Given("the base URL")
@@ -70,5 +74,6 @@ public class user_controller {
     public void verifyResponseContains(String key) {
         response.then().body("$", hasKey(key));
     }
+
 }
 

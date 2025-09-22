@@ -2,14 +2,10 @@ package runners;
 
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
-import org.junit.platform.suite.api.IncludeEngines;
-import org.junit.platform.suite.api.SelectClasspathResource;
-import org.junit.platform.suite.api.Suite;
 import org.junit.runner.RunWith;
 
-@Suite
-@IncludeEngines("cucumber")
-@SelectClasspathResource("features/API")
+
+
 @RunWith(Cucumber.class)
 @CucumberOptions(
         plugin = {
@@ -20,14 +16,17 @@ import org.junit.runner.RunWith;
                 "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"
         },
         monochrome = true,//makes the console reports more readable
-        features = "./src/test/resources/features", //path of the features folder
+        features = "./src/test/resources/features/API", //path of the features folder
         glue = {"stepDefinitions", "hooks"}, //path of the step definitions folder and (hooks folder if needed)
-        dryRun = false //generate the missing step definitions only. Do not run the existing step definitions
-        //tags = "@api_gio" //only run scenarios with @api tag
+        dryRun = false, //generate the missing step definitions only. Do not run the existing step definitions
+        tags = "@api_gio" //only run scenarios with @api tag
 
 )
 
 
 public class APITestRunner {
+
+
+
 }
 

@@ -2,7 +2,6 @@ package hooks;
 
 import baseUrl.GetLandEstateBaseUrl;
 import io.cucumber.java.After;
-import io.cucumber.java.AfterAll;
 import io.cucumber.java.Before;
 import utils.ExtentReportUtils;
 
@@ -12,7 +11,7 @@ import static io.restassured.RestAssured.given;
 public class HooksAPI {
 
 
-        @Before("@api_gio")
+        @Before
         public void setUpApi() {
 
             GetLandEstateBaseUrl.setUp();
@@ -42,13 +41,6 @@ public class HooksAPI {
                 System.out.println("No cleanup needed or API delete not implemented");
             }
 
-
-        }
-
-        @AfterAll
-                public static void ReportCreation() {
-
-            ExtentReportUtils.flush();
 
         }
 
