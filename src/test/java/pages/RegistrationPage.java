@@ -39,7 +39,7 @@ public class RegistrationPage {
     @FindBy(xpath = "//div[@class='p-toast-detail' and text()='E-mail already exists.']")
     public WebElement errorMessage;
 
-    @FindBy(xpath = "//div[@class='p-toast-detail' and text()='Your registration has been completed successfully. Please to activate your account, click on the activation link sent to your e-mail.']")
+    @FindBy(xpath = "//span[@class='p-toast-summary' and text()='Success']")
     public WebElement successMessage;
 
     @FindBy(xpath = "//div[text()='First name is required']")

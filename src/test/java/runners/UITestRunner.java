@@ -20,9 +20,9 @@ import org.junit.runner.RunWith;
                 "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"
         },
         monochrome = true,//makes the console reports more readable
-        features = "./src/test/resources/features", //path of the features folder
+        features = "./src/test/resources/features/UI", //path of the features folder
         glue = {"stepDefinitions", "hooks"}, //path of the step definitions folder and (hooks folder if needed)
-        //tags = "@ui_gio",
+        tags = "@ui_gio",
         dryRun = false //generate the missing step definitions only. Do not run the existing step definitions
 
 )

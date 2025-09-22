@@ -1,4 +1,4 @@
-@ui
+@ui_gio
 Feature: User Profile Management
   As a logged-in user
   I want to manage my profile information

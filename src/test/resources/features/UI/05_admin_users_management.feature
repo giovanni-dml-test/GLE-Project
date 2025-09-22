@@ -1,4 +1,4 @@
-@ui
+@ui_gio
 Feature: Admin User Management
   As an Admin user,
   I want to manage user accounts (login, view, update, assign roles, delete)
